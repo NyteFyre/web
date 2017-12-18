@@ -71,7 +71,8 @@ function startSignaling() {
 	rtcPeerConn.ondatachannel = receiveDataChannel;
 	
 	// send any ice candidates to the other peer
-	rtcPeerConn.onicecandidate = function (evt) {
+	rtcPeerConn.onicecandidate = function (evt)
+	{
 		if (evt.candidate)
 			io.emit('signal',{"user_type":"signaling", "command":"icecandidate", "user_data": JSON.stringify({ 'candidate': evt.candidate })});
 		console.log("completed sending an ice candidate...");
